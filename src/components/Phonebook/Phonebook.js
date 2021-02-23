@@ -1,15 +1,15 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import styles from "./Phonebook.module.css"
-// import shortid from "shortid"
 
 class Phonebook extends Component {
-  state = {
-    // id: "",
-    message: "",
+  initialState = {
+    name: "",
+    number: "",
   }
-
-  //   generateId = shortid.generate()
+  state = {
+    ...this.initialState,
+  }
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -18,22 +18,27 @@ class Phonebook extends Component {
     this.reset()
   }
 
-  onIputChange = (e) => {
-    this.setState({ message: e.currentTarget.value })
+  onInputChange = ({ target }) => {
+    const { name, value } = target
+    this.setState({ [name]: value })
   }
 
   reset = () => {
-    this.setState({ message: "" })
+    this.setState({ ...this.initialState })
   }
   render() {
     return (
       <div className={styles.phonebook}>
         <form onSubmit={this.handleSubmit}>
-          <h2>Phonebook</h2>
           <label>
             <p>Name</p>
-            <input type="text" value={this.state.message} className={styles.inpt} onChange={this.onIputChange} />
+            <input type="text" value={this.state.name} name="name" className={styles.inpt} onChange={this.onInputChange} />
           </label>
+          <label>
+            <p>Number</p>
+            <input type="text" value={this.state.number} name="number" className={styles.inpt} onChange={this.onInputChange} />
+          </label>
+
           <button type="submit" className={styles.btn}>
             Add contact
           </button>

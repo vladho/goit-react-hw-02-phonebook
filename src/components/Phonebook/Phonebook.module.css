@@ -1,18 +1,26 @@
 .phonebook {
   display: flex;
   justify-content: center;
+
+  width: 400px;
+  margin: 0 auto;
+  border: 1px solid black;
 }
 
 .btn {
   margin-top: 30px;
   display: flex;
-  width: 150px;
+  width: 158px;
   height: 30px;
 
-  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .inpt {
   /* display: flex; */
+  width: 150px;
   height: 30px;
 }

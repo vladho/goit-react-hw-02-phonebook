@@ -1,4 +1,10 @@
-.contacts {
+/* .contacts {
   display: flex;
   justify-content: center;
+
+  margin-top: 10px;
+} */
+
+.name {
+  margin-right: 10px;
 }
