@@ -13,12 +13,15 @@ class Phonebook extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    console.log(this.state)
+    // if (this.state === )
     this.props.onSubmit(this.state)
 
     this.reset()
   }
 
   onInputChange = ({ target }) => {
+    // console.log(target.value)
     const { name, value } = target
     this.setState({ [name]: value })
   }
