@@ -18,22 +18,15 @@ class App extends Component {
     filter: "",
   }
 
-  // generateId = shortid.generate()
-  test = 1
-
   submitForm = (data) => {
-    const test = this.state.contacts.filter((el) => data.name.toLowerCase() === el.name.toLowerCase())
-    if (test) {
+    const checkOnOriginal = this.state.contacts.find((el) => data.name.toLowerCase() === el.name.toLowerCase())
+    if (checkOnOriginal) {
       alert(`${data.name} is already in contacts`)
       return
+    } else {
+      this.setState({ contacts: [...this.state.contacts, data] })
     }
-    this.setState({ contacts: [...this.state.contacts, data] })
-    // this.state.contacts.filter((el) => (data.name.toLowerCase() === el.name.toLowerCase() ? console.log(data.name, el) : this.setState({ contacts: [...this.state.contacts, data] })))
   }
-
-  // submitFormFilter = () => {
-  //   this.state.contacts.find((el) => el.name )
-  // }
 
   filterForm = (e) => {
     // console.log(e.target.value)
@@ -43,6 +36,11 @@ class App extends Component {
   visiableContact = () => {
     const normalizedFilter = this.state.filter.toLowerCase()
     return this.state.contacts.filter((el) => el.name.toLowerCase().includes(normalizedFilter))
+  }
+  deleteContact = (data) => {
+    // const test = this.state.contacts.filter((el) => el.id !== data.id)
+    // console.log(test)
+    this.setState({ contacts: this.state.contacts.filter((el) => el.id !== data.id) })
   }
 
   render() {
@@ -61,7 +59,7 @@ class App extends Component {
           <Filter value={this.state.filter} onChange={this.filterForm} />
           {this.visiableContact().map((el) => (
             <ul key={uuidv4()} className="contacts__name">
-              <Contacts contacts={el} />
+              <Contacts contacts={el} deleteContact={this.deleteContact} />
             </ul>
           ))}
         </Section>
