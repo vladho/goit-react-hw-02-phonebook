@@ -12,15 +12,16 @@ class Phonebook extends Component {
     ...this.initialState,
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
+    await this.setState({ id: uuidv4() })
     this.props.onSubmit(this.state)
     this.reset()
   }
 
   onInputChange = ({ target }) => {
     const { name, value } = target
-    this.setState({ [name]: value, id: uuidv4() })
+    this.setState({ [name]: value })
   }
 
   reset = () => {
