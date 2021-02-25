@@ -12,6 +12,8 @@ const Section = (props) => {
   )
 }
 
-Section.propTypes = {}
+Section.propTypes = {
+  title: PropTypes.string.isRequired,
+}
 
 export default Section

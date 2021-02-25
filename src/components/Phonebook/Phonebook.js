@@ -13,15 +13,11 @@ class Phonebook extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
-    // if (this.state === )
     this.props.onSubmit(this.state)
-
     this.reset()
   }
 
   onInputChange = ({ target }) => {
-    // console.log(target.value)
     const { name, value } = target
     this.setState({ [name]: value })
   }
@@ -41,7 +37,6 @@ class Phonebook extends Component {
             <p>Number</p>
             <input type="text" value={this.state.number} name="number" className={styles.inpt} onChange={this.onInputChange} />
           </label>
-
           <button type="submit" className={styles.btn}>
             Add contact
           </button>
@@ -51,6 +46,8 @@ class Phonebook extends Component {
   }
 }
 
-Phonebook.propTypes = {}
+Phonebook.propTypes = {
+  props: PropTypes.string,
+}
 
 export default Phonebook

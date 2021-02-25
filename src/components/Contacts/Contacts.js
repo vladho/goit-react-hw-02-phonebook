@@ -17,6 +17,9 @@ const Contacts = ({ contacts, deleteContact }) => {
   )
 }
 
-Contacts.propTypes = {}
+Contacts.propTypes = {
+  contacts: PropTypes.object,
+  deleteContact: PropTypes.func.isRequired,
+}
 
 export default Contacts
