@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import styles from "./Phonebook.module.css"
+import { v4 as uuidv4 } from "uuid"
 
 class Phonebook extends Component {
   initialState = {
@@ -19,7 +20,7 @@ class Phonebook extends Component {
 
   onInputChange = ({ target }) => {
     const { name, value } = target
-    this.setState({ [name]: value })
+    this.setState({ [name]: value, id: uuidv4() })
   }
 
   reset = () => {

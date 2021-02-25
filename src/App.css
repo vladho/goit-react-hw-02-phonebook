@@ -38,8 +38,8 @@
 }
 
 .contacts__name {
-  display: flex;
-  justify-content: center;
+  margin: 0 auto;
+  width: 400px;
 
   margin-top: 10px;
 }

@@ -36,7 +36,9 @@ class App extends Component {
     return this.state.contacts.filter((el) => el.name.toLowerCase().includes(normalizedFilter))
   }
   deleteContact = (data) => {
-    this.setState({ contacts: this.state.contacts.filter((el) => el.id !== data.id) })
+    this.setState({
+      contacts: this.state.contacts.filter((el) => el.id !== data.id),
+    })
   }
 
   render() {
@@ -47,11 +49,11 @@ class App extends Component {
         </Section>
         <Section title="Contacts">
           <Filter value={this.state.filter} onChange={this.filterForm} />
-          {this.visiableContact().map((el) => (
-            <ul key={uuidv4()} className="contacts__name">
-              <Contacts contacts={el} deleteContact={this.deleteContact} />
-            </ul>
-          ))}
+          <ul className="contacts__name">
+            {this.visiableContact().map((el) => (
+              <Contacts key={el.id} contacts={el} deleteContact={this.deleteContact} />
+            ))}
+          </ul>
         </Section>
       </>
     )
